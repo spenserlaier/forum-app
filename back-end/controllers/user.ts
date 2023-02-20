@@ -8,6 +8,7 @@ dotenv.config();
 const SECRET:string = process.env.SECRET || "defaultsecret";
 
 
+
 export const signIn = async (req: Request, res: Response) => {
     //a post request that takes a req with username and pass,
     //checks for account with the username,
@@ -18,8 +19,8 @@ export const signIn = async (req: Request, res: Response) => {
         const attemptedUser =  await UserModel.findOne({
             username: loginData.username,
         })
-        if (attemptedUser?.password) {
-            //if password exists (ie we've found a successful user)
+        if (attemptedUser?.password && attemptedUser?.username && attemptedUser?.email) {
+            //ie we've found a non-null set of credentials
             const passwordsMatch = await bcrypt.compare(loginData.password, attemptedUser.password);
             if (passwordsMatch) {
                 const token = jwt.sign(
@@ -29,7 +30,8 @@ export const signIn = async (req: Request, res: Response) => {
                     )
                 res.status(200).json({
                     username: attemptedUser.username, 
-                    email: attemptedUser.email
+                    email: attemptedUser.email,
+                    token: token,
                 })
             }
             else {
@@ -49,19 +51,32 @@ export const signIn = async (req: Request, res: Response) => {
 export const createAccount = async (req: Request, res: Response) => {
     const accountData = req.body;
     try{
-        if (accountData != null) {
-            await UserModel.create({
-                username: accountData.username,
-                password: accountData.password,
-                email: accountData.email,
-            })
+        if (accountData?.username) {
+            console.log(accountData);
+            console.log(UserModel.countDocuments());
+            //note: find method returns a query object, which then needs
+            //to be executed
+            const alreadyExists = await UserModel.findOne({username: accountData.username}).exec();
+            if (alreadyExists === null) {
+                const hashedPassword = await bcrypt.hash(accountData.password, 12);
+                await UserModel.create({
+                    username: accountData.username,
+                    password: hashedPassword,
+                    email: accountData.email,
+                })
+                res.status(200).json({message: "account created!"});
+            }
+            else{
+                res.status(400).json({message: "username already exists"});
+            }
         }
         else {
-            res.json({message: "badly formed request (null data)"})
+            res.status(400).json({message: "badly formed request (null data)"})
         }
         
     }
     catch (err){
+        console.log(req.body);
         res.status(500).json({message: "unknown error"})
     }
    
