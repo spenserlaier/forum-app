@@ -10,18 +10,24 @@ import cors from "cors";
 
 const app = express();
 dotenv.config();
+<<<<<<< HEAD
 =======
 
 const app = express();
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
+=======
+>>>>>>> f26fbac (backend interfaces; post/user logic)
 
 
 const port = 5001;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 dotenv.config();
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
+=======
+>>>>>>> f26fbac (backend interfaces; post/user logic)
 //console.log(process.env.TESTING_VAR);
 const CONNECTION_STR = process.env.CONNECTION_STR || "simon says connect!";
 
@@ -40,7 +46,7 @@ app.use("/posts", postRouter);
 app.use("/comments", commentRouter);
 =======
 
-app.use(express.json);
+app.use(express.json());
 app.use(logger);
 
 app.use("/user", userRouter);
@@ -53,6 +59,7 @@ app.get( "/", (req,res) => {
     const pamjones = "awjeez"
     res.json({mything: bobjones, samjones, pamjones})
 })
+<<<<<<< HEAD
 <<<<<<< HEAD
 app.get("/testRoute", (req, res) => {
     res.send("this was a successful test, indeed!");
@@ -78,3 +85,21 @@ app.listen(
     () => {console.log(`server running on port ${port}`)}  
 );
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
+=======
+app.get("/testRoute", (req, res) => {
+    res.send("this was a successful test, indeed!");
+})
+
+const startServer = async () => {
+    try{
+        await mongoose.connect(CONNECTION_STR)
+        app.listen(port, () => {console.log(`server running on port ${port}`)})
+        mongoose.set('strictQuery', false);
+    }
+    catch (err){
+        console.log("looks like something went wrong:")
+        console.log(err);
+    }
+}
+startServer();
+>>>>>>> f26fbac (backend interfaces; post/user logic)
