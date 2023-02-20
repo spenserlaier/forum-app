@@ -5,6 +5,7 @@ interface CommentObj {
     //to identify comments in an existing post (ie, the comment has already
     //been posted, so it has an id)
     id: string;
+    dateCreated: String;
 }
 
 export default CommentObj;

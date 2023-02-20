@@ -4,6 +4,7 @@ import morgan from "morgan";
 import dotenv from "dotenv"
 import userRouter from "./routers/userRouter";
 import postRouter from "./routers/postRouter";
+import commentRouter from "./routers/commentRouter";
 
 const app = express();
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(logger);
 
 app.use("/user", userRouter);
 app.use("/posts", postRouter);
+app.use("/comments", commentRouter);
 app.get( "/", (req,res) => {
     //console.log(req.body);
     //res.send("yessir, looks like it's working");
