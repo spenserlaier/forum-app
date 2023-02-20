@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {commentSchema} from "./Comment";
+import {commentSchema} from "./CommentModel";
 
 const  PostSchema = new mongoose.Schema({
     title: String,

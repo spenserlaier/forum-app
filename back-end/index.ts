@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import dotenv from "dotenv"
 import userRouter from "./routers/userRouter";
+import postRouter from "./routers/postRouter";
 
 const app = express();
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(logger);
 
 app.use("/user", userRouter);
+app.use("/posts", postRouter);
 app.get( "/", (req,res) => {
     //console.log(req.body);
     //res.send("yessir, looks like it's working");
