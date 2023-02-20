@@ -12,6 +12,7 @@ import cors from "cors";
 const app = express();
 dotenv.config();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 const app = express();
@@ -22,6 +23,8 @@ const app = express();
 
 const app = express();
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
+=======
+>>>>>>> f26fbac (backend interfaces; post/user logic)
 
 
 const port = 5001;
@@ -29,6 +32,7 @@ const port = 5001;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 dotenv.config();
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
@@ -37,6 +41,8 @@ dotenv.config();
 =======
 dotenv.config();
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
+=======
+>>>>>>> f26fbac (backend interfaces; post/user logic)
 //console.log(process.env.TESTING_VAR);
 const CONNECTION_STR = process.env.CONNECTION_STR || "simon says connect!";
 
@@ -63,7 +69,7 @@ app.use("/user", userRouter);
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
 =======
 
-app.use(express.json);
+app.use(express.json());
 app.use(logger);
 
 app.use("/user", userRouter);
@@ -76,6 +82,7 @@ app.get( "/", (req,res) => {
     const pamjones = "awjeez"
     res.json({mything: bobjones, samjones, pamjones})
 })
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -111,6 +118,12 @@ app.get("/testRoute", (req, res) => {
     res.send("this was a successful test, indeed!");
 })
 
+=======
+app.get("/testRoute", (req, res) => {
+    res.send("this was a successful test, indeed!");
+})
+
+>>>>>>> f26fbac (backend interfaces; post/user logic)
 const startServer = async () => {
     try{
         await mongoose.connect(CONNECTION_STR)
@@ -122,8 +135,12 @@ const startServer = async () => {
         console.log(err);
     }
 }
+<<<<<<< HEAD
 startServer();
 >>>>>>> f26fbac (backend interfaces; post/user logic)
 =======
 );
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
+=======
+startServer();
+>>>>>>> f26fbac (backend interfaces; post/user logic)

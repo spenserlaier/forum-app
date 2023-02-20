@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import {Request, Response} from "express";
 import InitialPostObj from "../objects/InitialPostObj";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import GetPostsReqObj from "../objects/GetPostsReqObj";
 import PostModel from "../models/PostModel";
 import jwt, { Jwt } from "jsonwebtoken";
@@ -89,6 +90,8 @@ export const getSinglePost = async (req: Request, res: Response) => {
 
     }
 =======
+=======
+>>>>>>> f26fbac (backend interfaces; post/user logic)
 export const submitPost = async (req: Request, res: Response) => {
     try{
         //take the initial info, verify the token,
@@ -100,5 +103,8 @@ export const submitPost = async (req: Request, res: Response) => {
         
     }
 
+<<<<<<< HEAD
+>>>>>>> f26fbac (backend interfaces; post/user logic)
+=======
 >>>>>>> f26fbac (backend interfaces; post/user logic)
 }

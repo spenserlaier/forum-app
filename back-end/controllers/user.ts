@@ -11,6 +11,7 @@ const SECRET:string = process.env.SECRET || "defaultsecret";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
@@ -19,6 +20,9 @@ const SECRET:string = process.env.SECRET || "defaultsecret";
 >>>>>>> f26fbac (backend interfaces; post/user logic)
 =======
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
+=======
+
+>>>>>>> f26fbac (backend interfaces; post/user logic)
 export const signIn = async (req: Request, res: Response) => {
     //a post request that takes a req with username and pass,
     //checks for account with the username,
@@ -32,6 +36,7 @@ export const signIn = async (req: Request, res: Response) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (attemptedUser?.password && attemptedUser?.username && attemptedUser?.email) {
             //ie we've found a non-null set of credentials
 =======
@@ -46,6 +51,10 @@ export const signIn = async (req: Request, res: Response) => {
         if (attemptedUser?.password) {
             //if password exists (ie we've found a successful user)
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
+=======
+        if (attemptedUser?.password && attemptedUser?.username && attemptedUser?.email) {
+            //ie we've found a non-null set of credentials
+>>>>>>> f26fbac (backend interfaces; post/user logic)
             const passwordsMatch = await bcrypt.compare(loginData.password, attemptedUser.password);
             if (passwordsMatch) {
                 const token = jwt.sign(
@@ -89,8 +98,13 @@ export const signIn = async (req: Request, res: Response) => {
                     token: token,
 =======
                     username: attemptedUser.username, 
+<<<<<<< HEAD
                     email: attemptedUser.email
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
+=======
+                    email: attemptedUser.email,
+                    token: token,
+>>>>>>> f26fbac (backend interfaces; post/user logic)
                 })
             }
             else {
@@ -117,6 +131,9 @@ export const createAccount = async (req: Request, res: Response) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f26fbac (backend interfaces; post/user logic)
 =======
 >>>>>>> f26fbac (backend interfaces; post/user logic)
         if (accountData?.username) {
@@ -133,7 +150,11 @@ export const createAccount = async (req: Request, res: Response) => {
                     email: accountData.email,
                 })
 <<<<<<< HEAD
+<<<<<<< HEAD
                 res.status(200).json({success: true, message: "account created!"});
+=======
+                res.status(200).json({message: "account created!"});
+>>>>>>> f26fbac (backend interfaces; post/user logic)
 =======
                 res.status(200).json({message: "account created!"});
 >>>>>>> f26fbac (backend interfaces; post/user logic)
@@ -141,6 +162,7 @@ export const createAccount = async (req: Request, res: Response) => {
             else{
                 res.status(400).json({message: "username already exists"});
             }
+<<<<<<< HEAD
 <<<<<<< HEAD
         }
         else {
@@ -166,10 +188,16 @@ export const createAccount = async (req: Request, res: Response) => {
 >>>>>>> f26fbac (backend interfaces; post/user logic)
 =======
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
+=======
+        }
+        else {
+            res.status(400).json({message: "badly formed request (null data)"})
+>>>>>>> f26fbac (backend interfaces; post/user logic)
         }
         
     }
     catch (err){
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -181,6 +209,9 @@ export const createAccount = async (req: Request, res: Response) => {
 >>>>>>> f26fbac (backend interfaces; post/user logic)
 =======
 >>>>>>> 3fc8768 (combining front and backend into one git repo)
+=======
+        console.log(req.body);
+>>>>>>> f26fbac (backend interfaces; post/user logic)
         res.status(500).json({message: "unknown error"})
     }
    
