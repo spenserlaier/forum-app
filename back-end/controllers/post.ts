@@ -15,7 +15,8 @@ export const submitPost = async (req: Request, res: Response) => {
         //we store the post info in its own field, and the token in its own field as well
         const postInformation: InitialPostObj = req.body.postInfo;
         const token = req.body.token;
-        const currentDate = Date().toString().slice(0,10);
+        const dateObj = new Date();
+        const currentDate = dateObj.getTime().toString()
         let verifyToken: JwtPayload = {};
         try{
             verifyToken  = (jwt.verify(token, SECRET)) as JwtPayload;

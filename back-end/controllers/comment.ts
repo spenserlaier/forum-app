@@ -20,7 +20,9 @@ export const postComment = async (req: Request, res: Response) => {
         }
         const commentId = new mongoose.Types.ObjectId;
         const commentIdStr = commentId.toString();
-        const currentDate = Date().toString().slice(0,10);
+        //const currentDate = Date().toString().slice(0,10);
+        const dateObj = new Date();
+        const currentDate = dateObj.getTime().toString()
         const newComment: CommentObj = {
             author: reqInfo.author,
             body: reqInfo.body,
