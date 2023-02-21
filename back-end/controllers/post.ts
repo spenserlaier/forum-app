@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import {Request, Response} from "express";
 import InitialPostObj from "../objects/InitialPostObj";
+import GetPostsReqObj from "../objects/GetPostsReqObj";
 import PostModel from "../models/PostModel";
 import jwt, { Jwt } from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -43,5 +44,21 @@ export const submitPost = async (req: Request, res: Response) => {
         console.log(err);
         res.status(500).json({message: "unknown error occurred"});
     }
-
+}
+export const getPosts = async (req:Request, res: Response) => {
+    try{
+        const offset = req.query.offset as string || "0" 
+        const numResults = req.query.numResults as string || "10";
+        try{
+            const posts = PostModel.find().skip(parseInt(offset)).limit(parseInt(numResults)).sort({dateCreated: -1});
+            res.status(200).json(posts);
+        }
+        catch (err){
+            res.status(404).json({message: "error when fetching posts"});
+        }
+    }
+    catch(err) {
+        console.log(err);
+        res.status(500).json({message: "unknown error occurred"});
+    }
 }
