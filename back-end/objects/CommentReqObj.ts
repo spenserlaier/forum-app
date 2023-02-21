@@ -10,7 +10,7 @@ interface CommentReqBody {
 
     //for now, we include a postId alongside the other fields.
     //we may want to separate comment info from post info in the future
-    postId: mongoose.Types.ObjectId;
+    postId: string;
 
 
 }

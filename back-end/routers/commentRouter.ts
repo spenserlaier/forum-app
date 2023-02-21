@@ -2,7 +2,7 @@ import express from "express";
 import { postComment } from "../controllers/comment";
 
 const router = express.Router();
-router.post("/postComment", postComment)
+router.post("/submitComment", postComment)
 
 
 export default router;

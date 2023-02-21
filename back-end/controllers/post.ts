@@ -50,7 +50,8 @@ export const getPosts = async (req:Request, res: Response) => {
         const offset = req.query.offset as string || "0" 
         const numResults = req.query.numResults as string || "10";
         try{
-            const posts = PostModel.find().skip(parseInt(offset)).limit(parseInt(numResults)).sort({dateCreated: -1});
+            const posts = await PostModel.find().skip(parseInt(offset)).limit(parseInt(numResults)).sort({dateCreated: -1}).exec();
+            //console.log(posts[0]._id)
             res.status(200).json(posts);
         }
         catch (err){

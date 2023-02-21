@@ -29,6 +29,8 @@ export const signIn = async (req: Request, res: Response) => {
                     SECRET
                     )
                 res.status(200).json({
+                    //will probably remove the fields below eventually, since
+                    //they'll be included in the token 
                     username: attemptedUser.username, 
                     email: attemptedUser.email,
                     token: token,
