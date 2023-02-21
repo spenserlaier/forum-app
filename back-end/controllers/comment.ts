@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import CommentReqBody from "../objects/CommentReqBody"
+import CommentReqBody from "../objects/CommentReqObj"
 import CommentObj from "../objects/CommentObj";
 import mongoose from "mongoose";
 import PostModel from "../models/PostModel";

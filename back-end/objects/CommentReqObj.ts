@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 interface CommentReqBody {
 
     author: string;
@@ -9,7 +10,7 @@ interface CommentReqBody {
 
     //for now, we include a postId alongside the other fields.
     //we may want to separate comment info from post info in the future
-    postId: string;
+    postId: mongoose.Types.ObjectId;
 
 
 }
