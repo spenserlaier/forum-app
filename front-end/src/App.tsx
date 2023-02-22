@@ -13,7 +13,7 @@ function App() {
     body: "this is the body of a post made by bobjones",
     title: "this is the title of bobjones' post",
     dateCreated: "this is the date when bobjones' post was made",
-    id: "randomid1337", //id is still a string for now
+    _id: "randomid1337", //id is still a string for now
     comments: []
   }
   return (

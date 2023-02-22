@@ -4,7 +4,7 @@ interface PostObj  {
     body: string;
     title: string;
     dateCreated: string;
-    id: string;
+    _id: string;
     comments: CommentObj[];
 }
 export default PostObj;

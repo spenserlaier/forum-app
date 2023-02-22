@@ -5,6 +5,7 @@ import dotenv from "dotenv"
 import userRouter from "./routers/userRouter";
 import postRouter from "./routers/postRouter";
 import commentRouter from "./routers/commentRouter";
+import cors from "cors";
 
 const app = express();
 dotenv.config();
@@ -16,6 +17,10 @@ const port = 5001;
 const CONNECTION_STR = process.env.CONNECTION_STR || "simon says connect!";
 
 const logger = morgan("combined");
+const corsOptions = {
+    origin: "http://localhost:3000"
+}
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(logger);

@@ -13,7 +13,7 @@ const FullPost = () => {
     //console.log(postId);
     const matchingPost = fakePosts.find(
         (post) => {
-            return (post.id === postId)
+            return (post._id === postId)
         }
     )
     const [currentPost, setCurrentPost] = useState(matchingPost);

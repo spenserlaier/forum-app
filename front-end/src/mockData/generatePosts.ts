@@ -24,7 +24,7 @@ const generatePosts = (numPosts: number):PostObj[] => {
             title: postTitle,
             dateCreated: postDate,
             body: postBody,
-            id: postId,
+            _id: postId,
             comments: commentsArr,
         }
         outputArr.push(newPost);

@@ -4,6 +4,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface UserState {
     username: string;
     loggedIn: boolean;
+    token: string | null;
 }
 
 /*
@@ -13,7 +14,8 @@ const initialState  = {
 */
     const initialState: UserState = {
         username: "",
-        loggedIn: false
+        loggedIn: false,
+        token: null
     }
 
 const userSlice = createSlice(
@@ -29,8 +31,10 @@ const userSlice = createSlice(
             },
             setLoginFalse(state) {
                 state.loggedIn = false;
+            },
+            setToken(state, action:PayloadAction<string>) {
+                state.token = action.payload;
             }
-        
         },
     }
 )

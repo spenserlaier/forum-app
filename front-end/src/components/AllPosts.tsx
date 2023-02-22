@@ -4,32 +4,33 @@ import {useState, useEffect} from "react";
 import DefaultLayout from "./DefaultLayout";
 import {Link} from "react-router-dom";
 import fakePosts from "../mockData/fakePosts";
+import { getPosts } from "../api";
+
+//import axios from "axios";
 
 
-const testPost: PostObj = {
-    author:"bobjones",
-    title:"samjones",
-    dateCreated:"today",
-    body:"this is a post",
-    id:"5",
-    comments:[],
-}
-const AllPosts = (props:any) => {
+const AllPosts = () => {
     let initialState: PostObj[] = [];
+    //const [currentPosts, setCurrentPosts] = useState(fakePosts);
     const [currentPosts, setCurrentPosts] = useState(fakePosts);
-    //console.log(fakePosts);
     useEffect( () => {
-        //const getPosts = async () => {
-        const getPosts = () => {
-            //return [testPost]; 
-            setCurrentPosts(fakePosts);
+        const updatePosts = async () => {
+            try{
+                const posts = await getPosts();
+                console.log(posts);
+                setCurrentPosts(posts);
+            }
+            catch(err){
+                console.log(err);
+            }
         }
-        getPosts();
+        updatePosts();
     }, [])
+    //console.log(fakePosts);
     const postElements = currentPosts.map((post) => {
-        const postId = post.id;
+        const postId = post._id;
         const url = "/viewPost/" + postId;
-        return  (<Link to={url} key={post.id}>  <CondensedPost {...post} /> </Link>
+        return  (<Link to={url} key={postId}>  <CondensedPost {...post} /> </Link>
         )
         }
     )
