@@ -7,6 +7,7 @@ import { Button, TextField } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers/rootReducer";
 import DefaultLayout from "./DefaultLayout";
+import { login } from "../api";
 
 
 const Login = () => {
@@ -35,21 +36,13 @@ const Login = () => {
     }
     const userErrMsg = usernameConditions(username);
     const  passErrMsg = passConditions(pass);
-    
-    
-    
-
-    
-    
-    
-
-    
     const changeUsername = (ev: ChangeEvent<HTMLInputElement>) => {
         setUsername(ev.target.value);
     }
     const changePass = (ev: ChangeEvent<HTMLInputElement>) => {
         setPass(ev.target.value);
     }
+    /*
     const handleSubmit = () => {
         if (userErrMsg === "" && passErrMsg === "") {
             console.log(store.getState().user);
@@ -63,6 +56,40 @@ const Login = () => {
         }
         
     }
+    */
+
+    const handleSubmit = async () => {
+        /*
+        for this function, we'll contact the api and if the credentials are correct,
+        we'll get an object with username, email, and token back--
+        we can store the token in redux
+
+        */
+        if (userErrMsg === "" && passErrMsg === "") {
+
+            console.log(store.getState().user);
+            const res = await login(username, pass);
+            if (res?.data.success == true) {
+                store.dispatch(userSlice.actions.setUsername(res.data.username));
+                store.dispatch(userSlice.actions.setLoginTrue());
+                const token = res.data.token;
+                store.dispatch(userSlice.actions.setToken(res.data.token));
+                console.log("token is " + token)
+                console.log("setting the username and logging u in, broh");
+                console.log(store.getState().user);
+            }
+            else{
+                console.log("error on the backend: ");
+                console.log(res?.data.message);
+            }
+        }
+        else{
+            console.log("fix mistakes before submitting");
+        }
+        
+    }
+    
+    
     const usernameProps = {
         value:username,
         onChange: changeUsername

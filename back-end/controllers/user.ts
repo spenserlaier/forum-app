@@ -31,21 +31,31 @@ export const signIn = async (req: Request, res: Response) => {
                 res.status(200).json({
                     //will probably remove the fields below eventually, since
                     //they'll be included in the token 
+                    success: true,
                     username: attemptedUser.username, 
                     email: attemptedUser.email,
                     token: token,
                 })
             }
             else {
-               res.status(400).json({message: "bad password"});
+               res.status(400).json({
+                success: false,
+                message: "bad password"
+            });
             }
         }
         else {
-            res.status(404).json({message: "couldn't find user with that username"})
+            res.status(404).json({
+                success: false,
+                message: "couldn't find user with that username"
+            })
         }
     }
     catch (err) {
-        res.status(500).json({message: "something went wrong (unknown error)"})
+        res.status(500).json({
+            success: false,
+            message: "something went wrong (unknown error)"
+        })
         console.log(err);
     }
 }
