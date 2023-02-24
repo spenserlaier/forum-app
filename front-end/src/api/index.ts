@@ -26,12 +26,33 @@ export const getSinglePost = async(postId: string) => {
     }
 }
 
-export const submitPost = (token : string, postObj: InitialPostObj) => {
-    const reqBody = {
-        token: token,
-        postInfo: postObj
+export const submitPost = async (token : string, postObj: InitialPostObj) => {
+    try{
+        const reqBody = {
+            token: token,
+            postInfo: postObj
+        }
+        const response = API.post("/posts/submitPost", reqBody)
+        return response; 
     }
-    return API.post("/posts/submitPost", reqBody) 
+    catch (err){
+        console.log(err);
+    }
+}
+
+export const login = async(username: string, password: string) => {
+    try{
+        const reqBody = {
+            username: username,
+            password: password
+        }
+        const response = await API.post("/user/signIn", reqBody)
+        return response;
+    }
+    catch(err) {
+        console.log(err);
+    }
+    
 }
 
 

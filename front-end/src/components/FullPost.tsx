@@ -4,23 +4,39 @@ import DefaultLayout from "./DefaultLayout";
 import AddComment from "./AddComment";
 import fakePosts from "../mockData/fakePosts";
 import {useParams} from "react-router-dom";
-import {useState } from "react";
+import {useState, useEffect} from "react";
 import { Card } from "@mui/material";
+import { getSinglePost } from "../api";
 
 import styles from "../styles/post.module.css"
 const FullPost = () => {
     const {postId} = useParams();
-    //console.log(postId);
+    console.log(postId);
     const matchingPost = fakePosts.find(
         (post) => {
             return (post._id === postId)
         }
     )
     const [currentPost, setCurrentPost] = useState(matchingPost);
+    useEffect( () => {
+        const initializePost = async () => {
+            try{
+                const post = await getSinglePost(postId || "");
+                console.log(post);
+                setCurrentPost(post);
+            }
+            catch(err) {
+                console.log(err);
+            }
+            
+        }
+        initializePost();
+
+    }, [])
     if (currentPost !== undefined){
         const comments = currentPost.comments.map( (comment) => {
             return (
-            <div key={comment.id} >
+            <div key={comment._id} >
                 <Card variant="outlined">
                     <div>
                         This comment was written by: {comment.author}

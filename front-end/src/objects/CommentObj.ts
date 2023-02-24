@@ -1,7 +1,7 @@
 interface CommentObj {
     author: string;
     body: string;
-    id: string;
+    _id: string;
 
 }
 

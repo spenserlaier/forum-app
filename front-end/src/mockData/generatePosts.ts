@@ -14,7 +14,7 @@ const generatePosts = (numPosts: number):PostObj[] => {
         for (let b= 0; b < numComments; b ++) {
             const newComment:CommentObj = {
                 author: faker.name.fullName(),
-                id: faker.helpers.unique(faker.color.human),
+                _id: faker.helpers.unique(faker.color.human),
                 body: faker.company.catchPhrase(),
             }
             commentsArr.push(newComment);

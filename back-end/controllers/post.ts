@@ -64,11 +64,12 @@ export const getPosts = async (req:Request, res: Response) => {
         res.status(500).json({message: "unknown error occurred"});
     }
 }
-export const getSinglePost = async (req: Request, res: Response) {
+export const getSinglePost = async (req: Request, res: Response) => {
     try {
         const postId = req.query.id;
+        console.log("id is " + postId);
         const singlePost = await PostModel.findOne({_id:postId})
-        res.status(200).json({singlePost});
+        res.status(200).json(singlePost);
         
     }
     catch (err){
