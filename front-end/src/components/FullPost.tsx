@@ -7,10 +7,15 @@ import {useParams} from "react-router-dom";
 import {useState, useEffect} from "react";
 import { Card } from "@mui/material";
 import { getSinglePost} from "../api";
+import { useSelector } from "react-redux";
+import { RootState } from "../reducers/rootReducer";
 
 import styles from "../styles/post.module.css"
 const FullPost = () => {
     const {postId} = useParams();
+    const requireRefresh = useSelector( (state: RootState) => {
+        return state.posts.requireRefresh;
+    })
     console.log(postId);
     const matchingPost = fakePosts.find(
         (post) => {
@@ -28,11 +33,10 @@ const FullPost = () => {
             catch(err) {
                 console.log(err);
             }
-            
         }
         initializePost();
 
-    }, [])
+    }, [requireRefresh])
     if (currentPost !== undefined){
         const comments = currentPost.comments.map( (comment) => {
             return (

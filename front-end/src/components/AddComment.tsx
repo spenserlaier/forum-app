@@ -5,6 +5,8 @@ import { submitComment } from "../api";
 import InitialCommentObj from "../objects/InitialCommentObj";
 import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import postsSlice from "../reducers/postsSlice";
+import store from "../store/store";
 
 interface CommentProps {
     postId: string;
@@ -12,7 +14,9 @@ interface CommentProps {
 
 
 const AddComment = (props: CommentProps) => {
-    const navigate = useNavigate();
+    const requireRefresh = useSelector ((state: RootState) => {
+        return state.posts.requireRefresh;
+    })
     const userLoggedIn = useSelector((state:RootState) => {
         return (state.user.loggedIn);
     })
@@ -33,9 +37,11 @@ const AddComment = (props: CommentProps) => {
         }
         const res = await submitComment(userToken || "", commentObj, props.postId);
         console.log(res);
-        //return res;
-        //todo: we need to refresh the page when the comment is submitted, or else
-        //it gets submitted with no visual feedback whatsoever
+        //this doesn't feel like a great solution, but i'm not sure what the
+        //alternatives are--currently the fullpost component uses an effect that refreshes
+        //the data when requireRefresh changes
+        store.dispatch(postsSlice.actions.setRequireRefresh(!requireRefresh));
+
         return res;
     }
     
@@ -44,8 +50,6 @@ const AddComment = (props: CommentProps) => {
         onChange: handleCommentChange
     }
 
-        /*<textarea value={commentText} onChange= {handleCommentChange}> */
-        /*</textarea>*/
     const loggedInText = 
     <div>
         posting a comment as: {username}

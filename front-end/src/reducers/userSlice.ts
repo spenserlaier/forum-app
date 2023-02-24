@@ -12,11 +12,11 @@ const initialState  = {
     username: ""
 } as UserState
 */
-    const initialState: UserState = {
-        username: "",
-        loggedIn: false,
-        token: null
-    }
+const initialState: UserState = {
+    username: "",
+    loggedIn: false,
+    token: null
+}
 
 const userSlice = createSlice(
     {
