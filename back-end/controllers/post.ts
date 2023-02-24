@@ -35,15 +35,25 @@ export const submitPost = async (req: Request, res: Response) => {
                 dateCreated: currentDate,
             })
             console.log(newPost);
-            res.status(200).json({message: "post successfully created"});
+            res.status(200).json({
+                success: true,
+                message: "post successfully created",
+                post: newPost
+            });
         }
         else{
-            res.status(400).json({message: "couldn't verify identity of user"});
+            res.status(400).json({
+                success: false,
+                message: "couldn't verify identity of user"
+            });
         }
     }
     catch (err){
         console.log(err);
-        res.status(500).json({message: "unknown error occurred"});
+        res.status(500).json({
+            success: false,
+            message: "unknown error occurred"
+        });
     }
 }
 export const getPosts = async (req:Request, res: Response) => {

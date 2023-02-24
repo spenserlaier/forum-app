@@ -9,6 +9,7 @@ const CondensedPost = (props: PostObj) => {
         <div>
         <Card variant="outlined">
             <div> this is a forum post </div>
+            <div> {props.title}</div>
             <div>  {props.author}</div>
             <div> {props.body} </div>
             <div> {props.dateCreated} </div>

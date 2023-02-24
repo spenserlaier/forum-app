@@ -6,7 +6,7 @@ import fakePosts from "../mockData/fakePosts";
 import {useParams} from "react-router-dom";
 import {useState, useEffect} from "react";
 import { Card } from "@mui/material";
-import { getSinglePost } from "../api";
+import { getSinglePost} from "../api";
 
 import styles from "../styles/post.module.css"
 const FullPost = () => {
@@ -69,7 +69,7 @@ const FullPost = () => {
                     </div>
                 </Card>
                 <div>
-                    <AddComment/>
+                    <AddComment postId = {postId || ""}/>
                 </div>
                 <div>
                     Comments: {comments}

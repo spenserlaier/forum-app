@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../reducers/rootReducer";
 import InitialPostObj from "../objects/InitialPostObj";
 import PostObj from "../objects/PostObj";
+import InitialCommentObj from "../objects/InitialCommentObj";
 
 
 
@@ -10,7 +11,7 @@ const URL = process.env.REACT_APP_BACKEND_SERVER
 console.log(URL);
 const API = axios.create({ baseURL: process.env.REACT_APP_BACKEND_SERVER})
 export const getPosts = async () => {
-    const posts = await API.get("posts/getPosts");
+    const posts = await API.get("/posts/getPosts");
     return posts.data;
 }
 export const getSinglePost = async(postId: string) => {
@@ -18,7 +19,7 @@ export const getSinglePost = async(postId: string) => {
         const params = {
             id: postId
         }
-        const post = await API.get("posts/getSinglePost", {params: params});
+        const post = await API.get("/posts/getSinglePost", {params: params});
         return post.data;
     }
     catch (err){
@@ -32,12 +33,32 @@ export const submitPost = async (token : string, postObj: InitialPostObj) => {
             token: token,
             postInfo: postObj
         }
-        const response = API.post("/posts/submitPost", reqBody)
+        const response =await  API.post("/posts/submitPost", reqBody)
         return response; 
     }
     catch (err){
         console.log(err);
     }
+}
+
+export const submitComment = async(token: string, commentObj: InitialCommentObj, postId: string) => {
+    try{
+        //we need token, author, body, and postId
+        const reqBody = {
+            token: token,
+            author: commentObj.author,
+            body: commentObj.body,
+            postId: postId
+        }
+        const response = await API.post("/comments/submitComment", reqBody);
+        console.log(response);
+        return response;
+    }
+    
+    catch(err) {
+        console.log(err);
+    }
+    
 }
 
 export const login = async(username: string, password: string) => {
@@ -52,7 +73,6 @@ export const login = async(username: string, password: string) => {
     catch(err) {
         console.log(err);
     }
-    
 }
 
 

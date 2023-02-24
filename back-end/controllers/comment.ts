@@ -9,6 +9,7 @@ dotenv.config();
 const SECRET = process.env.SECRET || "default secret";
 
 export const postComment = async (req: Request, res: Response) => {
+    console.log("*** comment req initiated ***")
     try{
         const reqInfo: CommentReqObj = req.body;
         const token = req.body.token;
