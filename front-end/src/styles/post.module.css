@@ -1,3 +1,18 @@
 .forumPost {
-    background-color: purple
+    background-color: slategrey;
+    border-width: 2em;
+    border-radius: 1em;
+    text-align: center;
+    color: beige;
+}
+.comment {
+    background-color: slategrey;
+    border-width: 2em;
+    border-radius: 1em;
+    text-align: center;
+    color: beige;
+}
+.default {
+    background-color: slategrey;
+    color:green;
 }

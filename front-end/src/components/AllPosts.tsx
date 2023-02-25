@@ -5,6 +5,7 @@ import DefaultLayout from "./DefaultLayout";
 import {Link} from "react-router-dom";
 import fakePosts from "../mockData/fakePosts";
 import { getPosts } from "../api";
+import styles from "../styles/allPosts.module.css"
 
 //import axios from "axios";
 
@@ -37,7 +38,10 @@ const AllPosts = () => {
     //console.log(postElements);
     return (
         <DefaultLayout>
-            {postElements}
+            <div className = {styles.allPosts}>
+                {postElements}
+
+            </div>
         </DefaultLayout>
     )
 }

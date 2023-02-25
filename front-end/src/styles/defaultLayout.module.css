@@ -1,0 +1,21 @@
+.default {
+    background-color: #414141;
+    border-width: 6em;
+    border-radius: 3em;
+    text-align: center;
+    color: beige;
+}
+.header {
+    background-color: #414141;
+    border-width: 6em;
+    border-radius: 1;
+    text-align: center;
+    color: beige;
+}
+.footer {
+    background-color: #414141;
+    border-width: 6em;
+    border-radius: .5em;
+    text-align: center;
+    color: beige;
+}

@@ -40,13 +40,15 @@ const FullPost = () => {
     if (currentPost !== undefined){
         const comments = currentPost.comments.map( (comment) => {
             return (
-            <div key={comment._id} >
+            <div key={comment._id}  >
                 <Card variant="outlined">
-                    <div>
-                        This comment was written by: {comment.author}
-                    </div>
-                    <div>
-                        Comment text: {comment.body}
+                    <div className= {styles.comment}>
+                        <div>
+                            This comment was written by: {comment.author}
+                        </div>
+                        <div>
+                            Comment text: {comment.body}
+                        </div>
                     </div>
                 </Card>
             </div>
@@ -57,19 +59,19 @@ const FullPost = () => {
         })
         return (
             
-            <DefaultLayout>
-                <div>
-                    this is where the full post will go
-                </div>
+            <DefaultLayout  >
+                <div className = {styles.default}>
                 <Card variant="outlined" className={styles.forumPost}>
-                    <div>
-                        Title: {currentPost.title}
-                    </div>
-                    <div>
-                        Post made by: {currentPost.author}
-                    </div>
-                    <div>
-                        Created: {currentPost.dateCreated}
+                    <div className= {styles.forumPost}>
+                        <div>
+                            Title: {currentPost.title}
+                        </div>
+                        <div>
+                            Post made by: {currentPost.author}
+                        </div>
+                        <div>
+                            Created: {currentPost.dateCreated}
+                        </div>
                     </div>
                 </Card>
                 <div>
@@ -77,6 +79,7 @@ const FullPost = () => {
                 </div>
                 <div>
                     Comments: {comments}
+                </div>
                 </div>
             </DefaultLayout>
         )
