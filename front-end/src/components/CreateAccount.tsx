@@ -3,6 +3,8 @@ import DefaultLayout from "./DefaultLayout"
 import { Button, TextField} from "@mui/material";
 import userSlice from "../reducers/userSlice";
 import store from "../store/store";
+import { createAccount } from "../api";
+import { useNavigate } from "react-router-dom";
 
 
 const CreateAccount = () => {
@@ -10,6 +12,7 @@ const CreateAccount = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [verifyPassword, setVerifyPassword] = useState("");
+    const navigate = useNavigate();
     
     const handleUsernameChange = (ev: ChangeEvent<HTMLInputElement>) => {
         setNewUsername(ev.target.value);
@@ -72,15 +75,21 @@ const CreateAccount = () => {
     const passErrMsg = passConditions(password);
     const verifyErrMsg = verifyPassConditions(verifyPassword);
     
-    const submitAccountInfo = () => {
-        //TODO: backend verification, ie make sure username isn't taken
+    const submitAccountInfo = async () => {
+
         if (userErrMsg === "" && passErrMsg === "" && verifyErrMsg === "") {
-            console.log("account created");
-            console.log(store.getState().user);
-            store.dispatch(userSlice.actions.setUsername(newUsername));
-            store.dispatch(userSlice.actions.setLoginTrue());
-            console.log("setting the username and logging u in, broh");
-            console.log(store.getState().user);
+            const response = await createAccount(newUsername, email, password);
+            if (response?.data.success === true) {
+                console.log(response);
+                console.log("account created");
+                navigate("/login");
+                //console.log(store.getState().user);
+                //store.dispatch(userSlice.actions.setUsername(newUsername));
+                //store.dispatch(userSlice.actions.setLoginTrue());
+                //console.log("setting the username and logging in");
+                //console.log(store.getState().user);
+
+            }
 
         }
         else{

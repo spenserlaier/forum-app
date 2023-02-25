@@ -75,4 +75,23 @@ export const login = async(username: string, password: string) => {
     }
 }
 
+export const createAccount = async(username: string, email: string, password: string) => {
+    try{
+        //createAccount endpoint expects
+        //a req body with username, password, and email fields
+        //the route name is user/createAccount
+        const accountBody = {
+            username: username,
+            email: email,
+            password: password,
+        }
+        const response = await API.post("/user/createAccount", accountBody);
+        console.log("account created!")
+        return response;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
 

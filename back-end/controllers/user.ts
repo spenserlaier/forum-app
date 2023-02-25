@@ -76,7 +76,7 @@ export const createAccount = async (req: Request, res: Response) => {
                     password: hashedPassword,
                     email: accountData.email,
                 })
-                res.status(200).json({message: "account created!"});
+                res.status(200).json({success: true, message: "account created!"});
             }
             else{
                 res.status(400).json({message: "username already exists"});
