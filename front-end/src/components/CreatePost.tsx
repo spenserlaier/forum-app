@@ -51,7 +51,8 @@ const CreatePost = () => {
             console.log("post successfully created")
             console.log(res.data);
             const newPostId = res.data.post._id;
-            navigate("/posts/viewPost/"+newPostId);
+            //navigate("/posts/viewPost/"+newPostId);
+            navigate("/viewPost/"+newPostId);
 
         }
         else{

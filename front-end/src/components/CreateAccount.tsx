@@ -76,27 +76,18 @@ const CreateAccount = () => {
     const verifyErrMsg = verifyPassConditions(verifyPassword);
     
     const submitAccountInfo = async () => {
-
         if (userErrMsg === "" && passErrMsg === "" && verifyErrMsg === "") {
             const response = await createAccount(newUsername, email, password);
             if (response?.data.success === true) {
                 console.log(response);
                 console.log("account created");
                 navigate("/login");
-                //console.log(store.getState().user);
-                //store.dispatch(userSlice.actions.setUsername(newUsername));
-                //store.dispatch(userSlice.actions.setLoginTrue());
-                //console.log("setting the username and logging in");
-                //console.log(store.getState().user);
-
+                //todo: log the user in automatically after the account is created
             }
-
         }
         else{
             console.log("fix errors before proceeding");
         }
-
-        
     }
     
     
