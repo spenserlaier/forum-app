@@ -68,12 +68,30 @@ const CreatePost = () => {
             borderColor: "beige"
         }
     }
+    const inputLabelStyles = {
+        style: {
+            color: "beige"
+        }
+    }
     
     const loggedInText = 
         <div>
-            <TextField sx = {textFieldStyles} label="post title" inputProps={titleFieldProps}></TextField>
-            <TextField sx= {textFieldStyles} label="post body" multiline= {true} inputProps={bodyFieldProps}></TextField>
-            <Button sx= {{color:"beige"}} onClick = {() => handleSubmit()}> Create the post!</Button>
+            <TextField  
+                InputLabelProps={inputLabelStyles} 
+                sx = {textFieldStyles} 
+                label="post title" 
+                inputProps={titleFieldProps}>
+            </TextField>
+            <TextField 
+                InputLabelProps= {inputLabelStyles} 
+                sx= {textFieldStyles} 
+                label="post body" 
+                multiline= {true} 
+                inputProps={bodyFieldProps}>
+            </TextField>
+            <Button sx= {{color:"beige"}} onClick = {() => handleSubmit()}> 
+                Create the post!
+            </Button>
         </div>
     const notLoggedInText = 
         <div>
