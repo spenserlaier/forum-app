@@ -41,7 +41,7 @@ const FullPost = () => {
         const comments = currentPost.comments.map( (comment) => {
             return (
             <div key={comment._id}  >
-                <Card variant="outlined">
+                <Card variant="outlined" sx={{background:"gray"}}>
                     <div className= {styles.comment}>
                         <div>
                             This comment was written by: {comment.author}

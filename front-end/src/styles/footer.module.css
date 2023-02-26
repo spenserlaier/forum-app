@@ -1,0 +1,7 @@
+.default {
+    vertical-align: middle;
+    position: sticky;
+    bottom: 0;
+    background-color: #414141;
+    width: 100%;
+}

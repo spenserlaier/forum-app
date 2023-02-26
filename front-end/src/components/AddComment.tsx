@@ -47,13 +47,20 @@ const AddComment = (props: CommentProps) => {
     
     const commentFieldProps = {
         value: commentText,
-        onChange: handleCommentChange
+        onChange: handleCommentChange,
+        style: {color: "beige", borderColor: "yellow"}
+    }
+    const commentStyles =  {
+        fieldSet: {borderColor: "red"},
+        input: {
+            borderColor: "yellow"
+        }
     }
 
     const loggedInText = 
     <div>
         posting a comment as: {username}
-        <TextField inputProps={commentFieldProps} multiline={true}></TextField>
+        <TextField inputProps={commentFieldProps} multiline={true} sx={commentStyles}></TextField>
         <Button onClick = {() => handleSubmit()}> post it!</Button>
     </div>
     const notLoggedInText = 

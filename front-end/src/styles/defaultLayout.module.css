@@ -1,9 +1,12 @@
 .default {
     background-color: #414141;
     border-width: 6em;
-    border-radius: 3em;
+    border-radius: 1em;
     text-align: center;
-    color: beige;
+    color: beige; 
+    max-width: 60%;
+    margin: auto;
+    min-height: 100%;
 }
 .header {
     background-color: #414141;

@@ -1,18 +1,24 @@
 .forumPost {
-    background-color: slategrey;
+    background-color: #403A3A;
     border-width: 2em;
     border-radius: 1em;
     text-align: center;
     color: beige;
+
 }
 .comment {
-    background-color: slategrey;
+    background-color: #403A3A;
     border-width: 2em;
     border-radius: 1em;
     text-align: center;
     color: beige;
+    /*min-height:fit-content; */
+    min-height: 5em;
+    max-width: 40%;
+    margin: auto;
+    padding: 2em;
 }
 .default {
-    background-color: slategrey;
-    color:green;
+    background-color: #403A3A;
+    color:beige;
 }

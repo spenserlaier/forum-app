@@ -1,7 +1,9 @@
+import styles from "../styles/footer.module.css";
+
 const Footer = () => {
 
     return (
-        <div> this is default footer text</div>
+        <div className = {styles.default}> Simple Forum </div>
     )
 }
 export default Footer;

@@ -29,9 +29,9 @@ const Header = () => {
     return (
         <div>
             <nav>
-                <Button><Link to="/">this will be a link to home</Link></Button>
-                {userLoggedIn && <Button> <Link to= "/profile">this button will lead to the user's profile</Link> </Button>}
-                {userLoggedIn &&<Button> <Link to="/createPost">this button will create a post</Link> </Button>}
+                <Button><Link to="/">Home</Link></Button>
+                {userLoggedIn && <Button> <Link to= "/profile">Profile</Link> </Button>}
+                {userLoggedIn &&<Button> <Link to="/createPost">Create Post</Link> </Button>}
                 {accountButton}
             </nav>
         </div>

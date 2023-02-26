@@ -6,6 +6,7 @@ import { TextField, Button } from "@mui/material";
 import { submitPost } from "../api";
 import InitialPostObj from "../objects/InitialPostObj";
 import { useNavigate } from "react-router-dom";
+import styles from "../styles/createPost.module.css";
 const CreatePost = () => {
     const [postTitle, setPostTitle] = useState("default post title");
     const [postBody, setPostBody] = useState("default post body");
@@ -71,7 +72,10 @@ const CreatePost = () => {
         </div>
     return (
         <DefaultLayout>
-            {userLoggedIn? loggedInText : notLoggedInText}
+            <div className = {styles.default}>
+                {userLoggedIn? loggedInText : notLoggedInText}
+
+            </div>
         </DefaultLayout> 
     )
 
