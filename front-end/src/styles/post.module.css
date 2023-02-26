@@ -6,7 +6,7 @@
     color: beige;
 
 }
-.comment {
+.commentList {
     background-color: #403A3A;
     border-width: 2em;
     border-radius: 1em;
@@ -17,6 +17,12 @@
     max-width: 40%;
     margin: auto;
     padding: 2em;
+    border: 2em;
+}
+.comment {
+    border: 2em;
+    min-width: 10em;
+    min-height: 20%;
 }
 .default {
     background-color: #403A3A;

@@ -40,9 +40,9 @@ const FullPost = () => {
     if (currentPost !== undefined){
         const comments = currentPost.comments.map( (comment) => {
             return (
-            <div key={comment._id}  >
-                <Card variant="outlined" sx={{background:"gray"}}>
-                    <div className= {styles.comment}>
+            <div key={comment._id}  className= {styles.commentList}>
+                <Card variant="outlined" sx={{backgroundColor:"gray"}}>
+                    <div className = {styles.comment}>
                         <div>
                             This comment was written by: {comment.author}
                         </div>

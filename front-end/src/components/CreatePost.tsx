@@ -29,11 +29,14 @@ const CreatePost = () => {
     }
     const titleFieldProps = {
         value: postTitle,
-        onChange: handleTitleChange
+        onChange: handleTitleChange,
+        style: {color: "beige", borderColor: "yellow"}
+
     }
     const bodyFieldProps = {
         value: postBody,
-        onChange: handleBodyChange
+        onChange: handleBodyChange,
+        style: {color: "beige", borderColor: "yellow"}
     }
     const handleSubmit = async () => {
         //the backend expects an InitialPostObj,
@@ -59,22 +62,27 @@ const CreatePost = () => {
             console.log("something went wrong...")
         }
     }
+    const textFieldStyles = {
+        fieldSet: {borderColor: "beige !important"},
+        input: {
+            borderColor: "beige"
+        }
+    }
     
     const loggedInText = 
         <div>
-            <TextField label="post title" inputProps={titleFieldProps}></TextField>
-            <TextField label="post body" multiline= {true} inputProps={bodyFieldProps}></TextField>
-            <Button onClick = {() => handleSubmit()}> Create the post!</Button>
+            <TextField sx = {textFieldStyles} label="post title" inputProps={titleFieldProps}></TextField>
+            <TextField sx= {textFieldStyles} label="post body" multiline= {true} inputProps={bodyFieldProps}></TextField>
+            <Button sx= {{color:"beige"}} onClick = {() => handleSubmit()}> Create the post!</Button>
         </div>
     const notLoggedInText = 
         <div>
-            Log in if you wanna make a post, man!
+            Log in to create your own post
         </div>
     return (
         <DefaultLayout>
             <div className = {styles.default}>
                 {userLoggedIn? loggedInText : notLoggedInText}
-
             </div>
         </DefaultLayout> 
     )

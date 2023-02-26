@@ -4,6 +4,7 @@ import userSlice from "../reducers/userSlice";
 import { Button } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers/rootReducer";
+import styles from "../styles/header.module.css";
 const Header = () => {
     const userLoggedIn = useSelector( (state: RootState) => {
         return state.user.loggedIn;
@@ -19,9 +20,11 @@ const Header = () => {
     }
     const accountButton = <Button onClick= {userLoggedIn? () => logOutUser(): () => 0}>
         {userLoggedIn?
-        "Log out": 
+        <Link to= "/">
+            Log Out 
+        </Link>:
         <Link to ="/login">
-        Log in
+        Log In
         </Link>
         }
     </Button>

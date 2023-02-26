@@ -7,7 +7,7 @@ const CondensedPost = (props: PostObj) => {
     //console.log(props);
     return (
         
-        <Card variant="outlined">
+        <Card variant="outlined" >
             <div className = {styles.condensedPost}>
                 <div> this is a forum post </div>
                 <div> {props.title}</div>

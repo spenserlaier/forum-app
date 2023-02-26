@@ -1,0 +1,6 @@
+.default {
+    border-radius: .2em;
+    min-height:20em;
+    border: 1em;
+    border-color: black;
+}

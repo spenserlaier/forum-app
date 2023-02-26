@@ -51,9 +51,9 @@ const AddComment = (props: CommentProps) => {
         style: {color: "beige", borderColor: "yellow"}
     }
     const commentStyles =  {
-        fieldSet: {borderColor: "red"},
+        fieldSet: {borderColor: "beige !important"},
         input: {
-            borderColor: "yellow"
+            borderColor: "beige"
         }
     }
 
