@@ -70,13 +70,22 @@ const CreateAccount = () => {
         }
     }
     //TODO: email error handling
+    const verifyEmailConditions = (emailInput: string) => {
+        if (email == "") {
+            return "email cannot be blank"
+        }
+        else {
+            return "";
+        }
+    }
 
     const userErrMsg = usernameConditions(newUsername);
     const passErrMsg = passConditions(password);
     const verifyErrMsg = verifyPassConditions(verifyPassword);
+    const emailErrMsg = verifyEmailConditions(email);
     
     const submitAccountInfo = async () => {
-        if (userErrMsg === "" && passErrMsg === "" && verifyErrMsg === "") {
+        if (emailErrMsg === "" && userErrMsg === "" && passErrMsg === "" && verifyErrMsg === "") {
             const response = await createAccount(newUsername, email, password);
             if (response?.data.success === true) {
                 console.log(response);
@@ -113,7 +122,8 @@ const CreateAccount = () => {
                     
                 </div>
                 <div>
-                    <TextField label = "email" inputProps={emailProps}></TextField>
+                    <TextField error = {emailErrMsg !== "" }label = "email" inputProps={emailProps}></TextField>
+                    {emailErrMsg !== "" && emailErrMsg}
                     
                 </div>
                 <Button onClick={() => submitAccountInfo()}> Create your account </Button>

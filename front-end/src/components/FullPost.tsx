@@ -70,6 +70,12 @@ const FullPost = () => {
                             Post made by: {currentPost.author}
                         </div>
                         <div>
+                            Contents: {currentPost.body}
+
+
+                            
+                        </div>
+                        <div>
                             Created: {currentPost.dateCreated}
                         </div>
                     </div>
